@@ -26,7 +26,7 @@ SECRET_KEY = 'q9_zue8*#0b7(95#^6ukm2s)r4@7cb%62$=qa#n2424tiyuo^u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cretos.herokuapp.com']
 
 
 # Application definition
