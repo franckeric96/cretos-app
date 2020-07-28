@@ -121,9 +121,12 @@
 							</ul>
 						</div>
 					</div>
+					
+					{% if produits_page %}
+						
 					<div class="shop-product-cover">
 						<div class="row product-cover block">
-							{% for produit in produit  %}
+							{% for produit in produits_page  %}
 								<div class="col-12 col-sm-4 prod-item-col">
 									<div class="product-item">
 										<span class="top-sale">top sale</span>
@@ -155,21 +158,39 @@
 								</div>
 							{% endfor %}
 							
-							
 						</div>
-						<div class="pagination-cover">
+
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<div >
+							{% if produits_page.has_other_pages %}
 							<ul class="pagination">
-								<li class="pagination-item item-prev"><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-								<li class="pagination-item active"><a href="#">1</a></li>
-								<li class="pagination-item"><a href="#">2</a></li>
-								<li class="pagination-item"><a href="#">3</a></li>
-								<li class="pagination-item"><a href="#">4</a></li>
-								<li class="pagination-item"><a href="#">5</a></li>
-								<li class="pagination-item item-next"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+							  {% if produits_page.has_previous %}
+								<li><a href="?page={{ produits_page.previous_page_number }}">&laquo;</a></li>
+							  {% else %}
+								<li class="disabled"><span>&laquo;</span></li>
+							  {% endif %}
+							  {% for i in produits_page.paginator.page_range %}
+								{% if produits_page.number == i %}
+								  <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								{% else %}
+								  <li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+							  {% endfor %}
+							  {% if produits_page.has_next %}
+								<li><a href="?page={{ produits_page.next_page_number }}">&raquo;</a></li>
+							  {% else %}
+								<li class="disabled"><span>&raquo;</span></li>
+							  {% endif %}
 							</ul>
+							{% endif %}
 						</div>
 					</div>
 				</div>
+				{% endif %}
 			</div>
 		</div>
 	</section>

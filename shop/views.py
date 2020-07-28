@@ -44,9 +44,20 @@ def cart(request):
 def products(request):
     
     produit = Produit.objects.filter(status=True)
+    _paginator = Paginator(produit,6)
+    page = request.GET.get('page',1)
+
+    try:
+        produits_page = _paginator.page(page)
+    except PageNotAnInteger: # Si le numero de page n'est pas un entier
+        produits_page = _paginator.page(1)
+    except EmptyPage: # Si la page est vide
+        produits_page = _paginator.page(_paginator.num_pages)
+
 
     datas = {
-        "produit":produit,
+        'produits_page': produits_page,
+        
     }
 
 

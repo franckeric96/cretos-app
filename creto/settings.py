@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['cretos.herokuapp.com']
 
-
+# à ne pas oublié
 # Application definition
 
 INSTALLED_APPS = [
